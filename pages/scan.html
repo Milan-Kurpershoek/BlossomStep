@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Scanner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f0f8f0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        #cameraView {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            border: 3px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #000;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #2196F3;
+        }
+        .btn-secondary:hover {
+            background-color: #0b7dda;
+        }
+        .btn-warning {
+            background-color: #ff9800;
+        }
+        .btn-warning:hover {
+            background-color: #e68a00;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border: 2px solid #4CAF50;
+            text-align: left;
+        }
+        .plant-info {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .hidden {
+            display: none;
+        }
+        .loading {
+            font-size: 18px;
+            color: #2e7d32;
+            margin: 20px 0;
+        }
+        .camera-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        #photoCount {
+            margin-top: 15px;
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: red;
+            background: #ffe6e6;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="camera-icon">🌿📷</div>
+    <h1>Plant Scanner</h1>
+    <p>Neem een foto van een plant om deze te herkennen</p>
+
+    <!-- Camera view -->
+    <video id="cameraView" autoplay playsinline></video>
+    <br>
+
+    <!-- Capture button -->
+    <button id="captureBtn" class="btn">📷 Foto maken</button>
+
+    <!-- Canvas om foto vast te leggen (hidden) -->
+    <canvas id="photoCanvas" class="hidden"></canvas>
+
+    <!-- Preview van gemaakte foto -->
+    <div id="photoPreview" class="hidden">
+        <img id="previewImage" style="max-width: 400px; border-radius: 10px; border: 3px solid #4CAF50;">
+        <br>
+        <button id="retakeBtn" class="btn btn-warning">🔄 Opnieuw proberen</button>
+        <button id="sendBtn" class="btn btn-secondary">🔍 Plant scannen</button>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading" class="hidden loading">
+        ⏳ Plant aan het scannen...
+    </div>
+
+    <!-- Resultaat -->
+    <div id="result" class="hidden"></div>
+
+    <div id="photoCount">Gratis scans beschikbaar via Plant.id API</div>
+</div>
+
+<script>
+    const video = document.getElementById('cameraView');
+    const canvas = document.getElementById('photoCanvas');
+    const captureBtn = document.getElementById('captureBtn');
+    const retakeBtn = document.getElementById('retakeBtn');
+    const sendBtn = document.getElementById('sendBtn');
+    const photoPreview = document.getElementById('photoPreview');
+    const previewImage = document.getElementById('previewImage');
+    const resultDiv = document.getElementById('result');
+    const loadingDiv = document.getElementById('loading');
+    const photoCount = document.getElementById('photoCount');
+
+    let stream = null;
+
+    // Start de camera
+    async function startCamera() {
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: 'environment',
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 }
+                },
+                audio: false
+            });
+            video.srcObject = stream;
+        } catch (err) {
+            console.error('Fout bij toegang camera:', err);
+            alert('Kon geen toegang krijgen tot de camera. Controleer uw toestemmingen en zorg dat u HTTPS gebruikt.');
+        }
+    }
+
+    // Maak een foto
+    captureBtn.addEventListener('click', function() {
+        const context = canvas.getContext('2d');
+
+        // Stel canvas grootte in op video grootte
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        // Teken het huidige video frame op het canvas
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Toon de preview
+        previewImage.src = canvas.toDataURL('image/jpeg');
+        photoPreview.classList.remove('hidden');
+        captureBtn.classList.add('hidden');
+
+        // Stop de camera
+        if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+        }
+    });
+
+    // Opnieuw proberen
+    retakeBtn.addEventListener('click', function() {
+        photoPreview.classList.add('hidden');
+        resultDiv.classList.add('hidden');
+        captureBtn.classList.remove('hidden');
+        resultDiv.innerHTML = '';
+        startCamera();
+    });
+
+    // Verstuur foto naar server
+    sendBtn.addEventListener('click', async function() {
+        loadingDiv.classList.remove('hidden');
+        photoPreview.classList.add('hidden');
+        sendBtn.disabled = true;
+
+        // Converteer canvas naar blob
+        canvas.toBlob(async function(blob) {
+            const formData = new FormData();
+            formData.append('photo', blob, 'plant.jpg');
+
+            try {
+                const response = await fetch('scan_plant.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                loadingDiv.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+                sendBtn.disabled = false;
+
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                            <h2>🌿 Scan Resultaat</h2>
+                            <div class="plant-info">
+                                <p><strong>🔬 Wetenschappelijke naam:</strong> ${data.plant_name}</p>
+                                <p><strong>🎯 Nauwkeurigheid:</strong> ${Math.round(data.probability * 100)}%</p>
+                                <p><strong>🇳🇱 Nederlandse naam:</strong> ${data.common_names}</p>
+                                ${data.wiki_description ? `
+                                    <p><strong>📖 Beschrijving:</strong><br>
+                                    ${data.wiki_description.substring(0, 250)}...</p>
+                                ` : ''}
+                            </div>
+                            <button onclick="location.reload()" class="btn">🔄 Nieuwe scan</button>
+                        `;
+                } else {
+                    resultDiv.innerHTML = `
+                            <div class="error">
+                                <h3>❌ Fout</h3>
+                                <p>${data.error}</p>
+                                <button onclick="location.reload()" class="btn">🔄 Probeer opnieuw</button>
+                            </div>
+                        `;
+                }
+            } catch (error) {
+                console.error('Fout:', error);
+                loadingDiv.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+                resultDiv.innerHTML = `
+                        <div class="error">
+                            <h3>❌ Er ging iets mis</h3>
+                            <p>Probeer het later opnieuw</p>
+                            <p><small>Fout: ${error.message}</small></p>
+                            <button onclick="location.reload()" class="btn">🔄 Probeer opnieuw</button>
+                        </div>
+                    `;
+                sendBtn.disabled = false;
+            }
+        }, 'image/jpeg', 0.8);
+    });
+
+    // Start de camera wanneer de pagina laadt
+    window.addEventListener('load', function() {
+        if (window.location.protocol !== 'https:') {
+            alert('⚠️ Deze website vereist HTTPS voor camera toegang. Gelieve te gebruiken via HTTPS.');
+        }
+        startCamera();
+    });
+</script>
+</body>
+</html>
