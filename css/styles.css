@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f8f0;
+}
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+h1 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+#cameraView {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    border: 3px solid #4CAF50;
+    border-radius: 10px;
+    background-color: #000;
+}
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background-color: #2196F3;
+}
+.btn-secondary:hover {
+    background-color: #0b7dda;
+}
+.btn-warning {
+    background-color: #ff9800;
+}
+.btn-warning:hover {
+    background-color: #e68a00;
+}
+#result {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border: 2px solid #4CAF50;
+    text-align: left;
+}
+.plant-info {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+.hidden {
+    display: none;
+}
+.loading {
+    font-size: 18px;
+    color: #2e7d32;
+    margin: 20px 0;
+}
+.camera-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+.api-info {
+    margin-top: 15px;
+    color: #666;
+    font-style: italic;
+    font-size: 14px;
+}
+.error {
+    color: red;
+    background: #ffe6e6;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid red;
+}
+.similar-images {
+    margin-top: 15px;
+}
+.similar-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 5px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+}
+.preview-img {
+    max-width: 400px;
+    border-radius: 10px;
+    border: 3px solid #4CAF50;
+}

@@ -100,7 +100,7 @@
 
     <footer>
         <a href="index.php">Steps</a>
-        <a href="">Scan</a>
+        <a href="scan.html">Scan</a>
         <a href="rewards.php">Rewards</a>
         <a href="">Memories</a>
         <a href="">Profile</a>
