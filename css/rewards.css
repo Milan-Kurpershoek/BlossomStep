@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #F8FAFC;
+    color: #1F2937;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 414px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: #F8FAFC;
+}
+
+.header {
+    background: linear-gradient(135deg, #F97316, #EA580C);
+    padding: 24px 20px;
+    border-radius: 0 0 24px 24px;
+    color: white;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.header-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
+.header-text {
+    flex: 1;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.points-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 16px;
+    border-radius: 16px;
+    width: fit-content;
+}
+
+.points-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    fill: #F97316;
+}
+
+.points-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #F97316;
+}
+
+.section {
+    margin: 20px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 16px;
+}
+
+.reward-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.reward-card:hover {
+    transform: translateY(-2px);
+}
+
+.reward-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.brand-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 28px;
+}
+
+.reward-info {
+    flex: 1;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 4px;
+}
+
+.reward-title {
+    font-size: 14px;
+    color: #6B7280;
+    margin-bottom: 6px;
+}
+
+.points-row {
+    display: flex;
+    align-items: center;
+}
+
+.points-row-icon {
+    width: 14px;
+    height: 14px;
+    fill: #F97316;
+    margin-right: 4px;
+}
+
+.reward-points {
+    font-size: 14px;
+    font-weight: 600;
+    color: #F97316;
+}
+
+.claim-button {
+    background: #22C55E;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.claim-button:hover {
+    background: #16A34A;
+    transform: translateY(-1px);
+}
+
+.claim-button:active {
+    transform: translateY(0);
+}
+
+.claim-button.claimed {
+    background: #E5E7EB;
+    color: #6B7280;
+    cursor: not-allowed;
+}
+
+.claim-button.disabled {
+    background: #F3F4F6;
+    color: #9CA3AF;
+    cursor: not-allowed;
+}
+
+.claim-button.claimed:hover,
+.claim-button.disabled:hover {
+    transform: none;
+}
+
+.tip-card {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
+}
+
+.tip-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+.tip-content {
+    flex: 1;
+}
+
+.tip-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 2px;
+}
+
+.tip-text {
+    font-size: 14px;
+    color: #6B7280;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    z-index: 1000;
+    animation: slideDown 0.5s ease-out;
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .section {
+        margin: 16px;
+    }
+
+    .reward-card {
+        padding: 16px;
+    }
+}
