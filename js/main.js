@@ -1,5 +1,14 @@
+window.addEventListener('load', init);
+
+let button
 let stepCount = 0;
 let lastPeakTime = 0;
+const dailyGoal = 10000;
+
+function init(){
+button = document.getElementById('walk-button')
+button.addEventListener('click', increaseStepCount)
+}
 
 if (window.DeviceMotionEvent) {
     window.addEventListener("devicemotion", (event) => {
@@ -16,10 +25,24 @@ if (window.DeviceMotionEvent) {
 
         if (magnitude > threshold && now - lastPeakTime > 300) {
             stepCount++;
+            updateDailyProgress()
             lastPeakTime = now;
             document.getElementById("stepsNumber").textContent = stepCount.toString();
         }
     });
 } else {
     alert("DeviceMotion is not supported on this device.");
+}
+
+function updateDailyProgress(){
+ const dailyProgress = Math.min((stepCount / dailyGoal) * 100, 100)
+
+    document.getElementById('progressFill').style.width = dailyProgress + '%';
+}
+
+function increaseStepCount(){
+    stepCount++;
+    updateDailyProgress()
+    console.log(stepCount)
+    document.getElementById("stepsNumber").textContent = stepCount.toString();
 }
