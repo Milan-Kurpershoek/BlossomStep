@@ -1,0 +1,184 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BlossomStep</title>
+    <link rel="stylesheet" href="../css/rewards.css">
+
+</head>
+
+<body>
+<div class="container">
+    <header class="header">
+        <div class="header-content">
+            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+                <path d="m12 8-2-2v6l2-2 2 2V6l-2 2Z"></path>
+                <path d="M2 12h20"></path>
+            </svg>
+            <div class="header-text">
+                <h1 class="header-title">Rewards</h1>
+                <p class="header-subtitle">Redeem your activity points</p>
+            </div>
+        </div>
+        <div class="points-card">
+            <svg class="points-icon" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+            </svg>
+            <span class="points-text" id="userPoints">2,450 points</span>
+        </div>
+    </header>
+
+    <section class="section">
+        <h2 class="section-title">Available Rewards</h2>
+
+        <div class="reward-card">
+            <div class="reward-header">
+                <div class="brand-icon" style="background-color: rgba(255, 199, 44, 0.15);">🍟</div>
+                <div class="reward-info">
+                    <h3 class="brand-name">McDonald's</h3>
+                    <p class="reward-title">10% off any meal</p>
+                    <div class="points-row">
+                        <svg class="points-row-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <span class="reward-points">500 points</span>
+                    </div>
+                </div>
+            </div>
+            <button class="claim-button" onclick="claimReward(1, 500, 'McDonald\'s 10% off')">Claim</button>
+        </div>
+
+        <div class="reward-card">
+            <div class="reward-header">
+                <div class="brand-icon" style="background-color: rgba(0, 168, 98, 0.15);">☕</div>
+                <div class="reward-info">
+                    <h3 class="brand-name">Starbucks</h3>
+                    <p class="reward-title">Free pastry with drink</p>
+                    <div class="points-row">
+                        <svg class="points-row-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <span class="reward-points">750 points</span>
+                    </div>
+                </div>
+            </div>
+            <button class="claim-button claimed" disabled>Claimed</button>
+        </div>
+
+        <div class="reward-card">
+            <div class="reward-header">
+                <div class="brand-icon" style="background-color: rgba(229, 0, 0, 0.15);">👕</div>
+                <div class="reward-info">
+                    <h3 class="brand-name">H&M</h3>
+                    <p class="reward-title">15% off clothing</p>
+                    <div class="points-row">
+                        <svg class="points-row-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <span class="reward-points">1,000 points</span>
+                    </div>
+                </div>
+            </div>
+            <button class="claim-button" onclick="claimReward(3, 1000, 'H&M 15% off clothing')">Claim</button>
+        </div>
+
+        <div class="reward-card">
+            <div class="reward-header">
+                <div class="brand-icon" style="background-color: rgba(0, 0, 0, 0.15);">👗</div>
+                <div class="reward-info">
+                    <h3 class="brand-name">Zara</h3>
+                    <p class="reward-title">20% off new collection</p>
+                    <div class="points-row">
+                        <svg class="points-row-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <span class="reward-points">1,200 points</span>
+                    </div>
+                </div>
+            </div>
+            <button class="claim-button" onclick="claimReward(4, 1200, 'Zara 20% off new collection')">Claim</button>
+        </div>
+
+        <div class="reward-card">
+            <div class="reward-header">
+                <div class="brand-icon" style="background-color: rgba(0, 84, 61, 0.15);">🥪</div>
+                <div class="reward-info">
+                    <h3 class="brand-name">Subway</h3>
+                    <p class="reward-title">Buy one get one 50% off</p>
+                    <div class="points-row">
+                        <svg class="points-row-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <span class="reward-points">600 points</span>
+                    </div>
+                </div>
+            </div>
+            <button class="claim-button" onclick="claimReward(5, 600, 'Subway BOGO 50% off')">Claim</button>
+        </div>
+
+        <div class="reward-card">
+            <div class="reward-header">
+                <div class="brand-icon" style="background-color: rgba(0, 0, 0, 0.15);">👟</div>
+                <div class="reward-info">
+                    <h3 class="brand-name">Nike</h3>
+                    <p class="reward-title">25% off sneakers</p>
+                    <div class="points-row">
+                        <svg class="points-row-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <span class="reward-points">1,500 points</span>
+                    </div>
+                </div>
+            </div>
+            <button class="claim-button disabled" disabled>Need more points</button>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">How to Earn Points</h2>
+
+        <div class="tip-card">
+            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+                <path d="M19 7h-3V6a4 4 0 0 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1ZM10 6a2 2 0 0 1 4 0v1h-4V6Zm6 9a1 1 0 0 1-2 0v-2a1 1 0 0 1 2 0v2Z"></path>
+            </svg>
+            <div class="tip-content">
+                <h3 class="tip-title">Daily Steps</h3>
+                <p class="tip-text">Earn 1 point per 100 steps</p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2">
+                <path d="M6 3h12l4 6-10 13L2 9l4-6Z"></path>
+                <path d="M11 3 8 9l4 13 4-13-3-6"></path>
+                <path d="M2 9h20"></path>
+            </svg>
+            <div class="tip-content">
+                <h3 class="tip-title">Plant Discovery</h3>
+                <p class="tip-text">10-200 points per unique plant</p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="#EAB308" stroke-width="2">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                <line x1="3" x2="21" y1="6" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <div class="tip-content">
+                <h3 class="tip-title">Weekly Goals</h3>
+                <p class="tip-text">Bonus 500 points for completing weekly targets</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <a href="index.php">Steps</a>
+        <a href="">Scan</a>
+        <a href="rewards.php">Rewards</a>
+        <a href="">Memories</a>
+        <a href="">Profile</a>
+    </footer>
+</div>
+</body>

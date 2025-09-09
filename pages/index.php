@@ -1,1 +1,109 @@
-<?php
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BlossomStep</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+<div class="container">
+    <header class="header">
+        <h1 class="header-title">StepQuest</h1>
+        <p class="header-subtitle">Keep moving, keep discovering!</p>
+    </header>
+
+    <main class="main-card">
+        <div class="steps-display">
+            <div class="steps-number" id="stepsNumber">6,247</div>
+            <div class="steps-label">steps today</div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-background">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="goal-text">10,000 daily goal</div>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <svg class="icon icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                </svg>
+                <div class="stat-number">7</div>
+                <div class="stat-label">day streak</div>
+            </div>
+            <div class="stat-item">
+                <svg class="icon icon-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                    <path d="M4 22h16"></path>
+                    <path d="M10 14.66V17c0 .55.47.98.97 1.21C12.04 18.75 13 20.24 13 22"></path>
+                    <path d="M14 14.66V17c0 .55-.47.98-.97 1.21C11.96 18.75 11 20.24 11 22"></path>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                </svg>
+                <div class="stat-number">12</div>
+                <div class="stat-label">plants found</div>
+            </div>
+            <div class="stat-item">
+                <svg class="icon icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="6"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+                <div class="stat-number">8</div>
+                <div class="stat-label">rewards earned</div>
+            </div>
+        </div>
+    </main>
+
+    <section class="weekly-card">
+        <div class="card-header">
+            <svg class="icon icon-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"></polyline>
+                <polyline points="16,7 22,7 22,13"></polyline>
+            </svg>
+            <h2 class="card-title">Weekly Progress</h2>
+        </div>
+        <div class="weekly-steps" id="weeklySteps">42,156 / 70,000</div>
+        <div class="progress-container">
+            <div class="progress-background">
+                <div class="progress-fill weekly-progress" id="weeklyProgress"></div>
+            </div>
+        </div>
+    </section>
+
+    <button class="simulate-button" onclick="simulateSteps()">
+        <div class="button-gradient">Simulate Walk 🚶‍♂️</div>
+    </button>
+
+    <section class="achievements-card">
+        <h2 class="card-title">Recent Achievements</h2>
+        <div class="achievement">
+            <div class="achievement-icon">🌺</div>
+            <div class="achievement-content">
+                <div class="achievement-title">Plant Explorer</div>
+                <div class="achievement-subtitle">Discovered your 10th unique plant!</div>
+            </div>
+        </div>
+        <div class="achievement">
+            <div class="achievement-icon">🔥</div>
+            <div class="achievement-content">
+                <div class="achievement-title">Week Warrior</div>
+                <div class="achievement-subtitle">7-day streak completed!</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="index.php">Steps</a>
+        <a href="">Scan</a>
+        <a href="rewards.php">Rewards</a>
+        <a href="">Memories</a>
+        <a href="">Profile</a>
+    </footer>
+</div>
+</body>
