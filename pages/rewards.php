@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <button class="claim-button" onclick="claimReward(1, 500, 'McDonald\'s 10% off')">Claim</button>
+<!--            <button class="claim-button" onclick="claimReward(1, 500, 'McDonald\'s 10% off')">Claim</button>-->
         </div>
 
         <div class="reward-card">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <button class="claim-button" onclick="claimReward(3, 1000, 'H&M 15% off clothing')">Claim</button>
+<!--            <button class="claim-button" onclick="claimReward(3, 1000, 'H&M 15% off clothing')">Claim</button>-->
         </div>
 
         <div class="reward-card">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <button class="claim-button" onclick="claimReward(4, 1200, 'Zara 20% off new collection')">Claim</button>
+<!--            <button class="claim-button" onclick="claimReward(4, 1200, 'Zara 20% off new collection')">Claim</button>-->
         </div>
 
         <div class="reward-card">
@@ -106,7 +106,7 @@
                 <div class="brand-icon" style="background-color: rgba(0, 84, 61, 0.15);">🥪</div>
                 <div class="reward-info">
                     <h3 class="brand-name">Subway</h3>
-                    <p class="reward-title">Buy one get one 50% off</p>
+                    <p class="reward-title">Buy one, get one 50% off</p>
                     <div class="points-row">
                         <svg class="points-row-icon" viewBox="0 0 24 24" fill="currentColor">
                             <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
             </div>
-            <button class="claim-button" onclick="claimReward(5, 600, 'Subway BOGO 50% off')">Claim</button>
+<!--            <button class="claim-button" onclick="claimReward(5, 600, 'Subway BOGO 50% off')">Claim</button>-->
         </div>
 
         <div class="reward-card">
@@ -174,7 +174,7 @@
         </div>
     </section>
     <footer>
-        <a href="index.php">Steps</a>
+        <a href="index.html">Steps</a>
         <a href="">Scan</a>
         <a href="rewards.php">Rewards</a>
         <a href="">Memories</a>
