@@ -254,3 +254,4 @@ window.addEventListener('load', function() {
 
     startCamera();
 });
+

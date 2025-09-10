@@ -46,3 +46,5 @@ function increaseStepCount(){
     console.log(stepCount)
     document.getElementById("stepsNumber").textContent = stepCount.toString();
 }
+
+
