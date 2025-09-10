@@ -23,7 +23,23 @@ body {
     padding: 24px;
     border-radius: 0 0 24px 24px;
     color: white;
+    margin-bottom: 35px;
 }
+footer a{
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0.9;
+    color: white;
+}
+.links{
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+    padding: 24px;
+    border-radius: 24px 24px 0 0;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 
 .header-title {
     font-size: 28px;
@@ -81,7 +97,7 @@ body {
     background-color: #22C55E;
     border-radius: 4px;
     transition: width 1.5s ease-out;
-    width: 62.47%;
+    width: 0%;
 }
 
 .goal-text {
@@ -153,7 +169,7 @@ body {
 }
 
 .simulate-button {
-    margin: 0 20px 20px;
+    /*margin: 0 20px 20px;*/
     border-radius: 16px;
     overflow: hidden;
     border: none;
@@ -249,6 +265,7 @@ body {
 @media (max-width: 480px) {
     .container {
         max-width: 100%;
+        padding: 0 20px 0 20px;
     }
 
     .steps-number {
