@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     text-align: center;
     background-color: #f0f8f0;
 }
@@ -16,6 +16,23 @@ h1 {
     color: #2e7d32;
     margin-bottom: 10px;
 }
+
+footer a{
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0.9;
+    color: white;
+}
+footer{
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+    padding: 24px;
+    border-radius: 24px 24px 0 0;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
 #cameraView {
     width: 100%;
     max-width: 400px;

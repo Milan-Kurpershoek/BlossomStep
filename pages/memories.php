@@ -87,13 +87,12 @@ mysqli_close($db);
             </div>
         <?php } ?>
     </section>
+    <footer>
+        <a href="index.html">Steps</a>
+        <a href="scan.html">Scan</a>
+        <a href="rewards.html">Rewards</a>
+        <a href="memories.php">Memories</a>
+        <a href="">Profile</a>
+    </footer>
 </div>
-
-<footer>
-    <a href="index.html">Steps</a>
-    <a href="scan.html">Scan</a>
-    <a href="rewards.html">Rewards</a>
-    <a href="memories.php">Memories</a>
-    <a href="">Profile</a>
-</footer>
 </body>
