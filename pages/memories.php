@@ -92,7 +92,7 @@ mysqli_close($db);
         <a href="scan.html">Scan</a>
         <a href="rewards.html">Rewards</a>
         <a href="memories.php">Memories</a>
-        <a href="">Profile</a>
+        <a href="profile.html">Profile</a>
     </footer>
 </div>
 </body>
