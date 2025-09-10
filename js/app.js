@@ -1,3 +1,4 @@
+// app.js - Complete code met lagere plantpunten voor demonstratie
 // DOM elements
 const video = document.getElementById('cameraView');
 const canvas = document.getElementById('photoCanvas');
@@ -134,11 +135,60 @@ function processApiResponse(data) {
 
         if (suggestions.length > 0) {
             createResultElements(suggestions[0], data);
+
+            // Award points for plant discovery
+            const pointsEarned = awardPlantPoints();
+
+            // Show points earned in the result
+            const pointsNotification = document.createElement('div');
+            pointsNotification.className = 'points-notification';
+            pointsNotification.innerHTML = `<p style="background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                +${pointsEarned} points earned for plant discovery!
+            </p>`;
+            resultDiv.insertBefore(pointsNotification, resultDiv.firstChild);
         } else {
             showError('Geen resultaat', 'Geen plant herkend in de foto');
         }
     } else {
         showError('API Fout', 'Ongeldige response van Plant.id API');
+    }
+}
+
+// Award points for plant discovery
+function awardPlantPoints(plantRarity = 'common') {
+    // Lagere puntwaarden voor demonstratie
+    const pointValues = {
+        'common': 10,
+        'uncommon': 15,
+        'rare': 25,
+        'epic': 40,
+        'legendary': 50
+    };
+
+    const pointsEarned = pointValues[plantRarity] || pointValues.common;
+
+    // Use the points system to add points
+    if (window.pointsSystem) {
+        window.pointsSystem.addPoints(pointsEarned, 'plant_scan');
+    } else {
+        // Fallback if points system isn't loaded
+        let currentPoints = parseFloat(localStorage.getItem('userPoints') || 0);
+        currentPoints += pointsEarned;
+        localStorage.setItem('userPoints', currentPoints.toString());
+
+        // Update points display
+        updatePointsDisplay();
+    }
+
+    return pointsEarned;
+}
+
+// Update points display
+function updatePointsDisplay() {
+    const pointsElement = document.getElementById('userPoints');
+    if (pointsElement) {
+        const currentPoints = parseFloat(localStorage.getItem('userPoints') || 0);
+        pointsElement.textContent = Math.floor(currentPoints) + ' points';
     }
 }
 
@@ -254,4 +304,3 @@ window.addEventListener('load', function() {
 
     startCamera();
 });
-
