@@ -37,11 +37,12 @@ mysqli_close($db);
     </header>
 
     <div class="year-input-card">
-        <h2 class="card-title">Enter a Year to Explore</h2>
+<!--        <h2 class="card-title">Enter a Year to Explore</h2>-->
+        <h2 class="section-title">Your Memory Collection</h2>
     </div>
 
     <section class="section">
-        <h2 class="section-title">Your Memory Collection</h2>
+
 
         <?php foreach ($years as $year) { ?>
             <div class="memory-card">
