@@ -4,7 +4,7 @@ window.addEventListener('load', init);
 let button;
 let stepCount = 0;
 let lastPeakTime = 0;
-const dailyGoal = 10000;
+const dailyGoal = 100;
 const POINTS_PER_STEP = 0.01; // 1 point per 100 steps (ORIGINEEL)
 
 function init(){
